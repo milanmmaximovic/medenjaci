@@ -92,7 +92,24 @@ function kutija(){
     +`<rect x="92" y="108" width="16" height="68" fill="${CRVENA}"/><rect x="30" y="134" width="140" height="14" fill="${CRVENA}"/>`
     +`<path d="M100 140 C 70 116, 62 156, 100 141 C 138 156, 130 116, 100 140Z" fill="#a62a20"/><circle cx="100" cy="141" r="7" fill="${CRVENA}"/>`;
 }
-const CRTEZI={covek,srce,zvezda,jelka,pahulja,kucica,kesica,kutija};
+function kugla(){
+  return `<path d="M100 26 a10 10 0 1 1 0.1 0" fill="none" stroke="${ZUTA}" stroke-width="4"/>`
+    +`<rect x="82" y="34" width="36" height="20" rx="4" fill="${TESTO}" stroke="${IVICA}" stroke-width="5"/>`
+    +`<circle cx="100" cy="114" r="64" fill="${TESTO}" stroke="${IVICA}" stroke-width="7"/>`
+    +linija("M82 40 H118",2.4)+linija("M82 48 H118",2.4)
+    +cikcak(42,92,158,92,14,5)+cikcak(42,136,158,136,14,5)
+    +linija("M48 114 H152",2.6)
+    +tacka(66,114,5,CRVENA)+tacka(100,114,5,ZELENA)+tacka(134,114,5,CRVENA)
+    +`<path d="${zvezdaPutanja(100,72,9,4)}" fill="${GLAZURA}"/><path d="${zvezdaPutanja(100,158,9,4)}" fill="${GLAZURA}"/>`;
+}
+function godina(){
+  const t=`<text x="100" y="128" text-anchor="middle" font-family="Lora, Georgia, serif" font-weight="600" font-size="78" letter-spacing="-2"`;
+  return `${t} fill="${TESTO}" stroke="${IVICA}" stroke-width="14" stroke-linejoin="round" paint-order="stroke">2027</text>`
+    +`${t} fill="none" stroke="${GLAZURA}" stroke-width="2.4" stroke-dasharray="0.1 7" stroke-linecap="round" transform="translate(100 102) scale(.86) translate(-100 -102)">2027</text>`
+    +tacka(46,64,5,CRVENA)+tacka(154,64,5,ZELENA)
+    +`<path d="${zvezdaPutanja(100,52,12,5)}" fill="${ZUTA}" stroke="#d9a72a" stroke-width="1.5" stroke-linejoin="round"/>`;
+}
+const CRTEZI={kugla,godina,covek,srce,zvezda,jelka,pahulja,kucica,kesica,kutija};
 function crtez(oblik){ return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${(CRTEZI[oblik]||covek)()}</svg>`; }
 
 /* ---------- stanje ---------- */
@@ -133,7 +150,7 @@ function prikaziPonudu(){
       </div></article>`;
   }).join("");
   const al=[...new Set(PONUDA.flatMap(p=>p.alergeni||[]))].map(a=>ALERGENI[a]);
-  return `<div class="view-head"><span class="eyebrow">Ponuda</span><h1>Naši medenjaci</h1><p>Medenjaci od meda i začina, ukrašeni rukom. Izaberi koliko ti treba i dodaj u korpu.</p></div>
+  return `<div class="view-head"><span class="eyebrow">Novogodišnja ponuda</span><h1>Medenjaci za praznike</h1><p>Od meda i začina, ukrašeni rukom: za jelku, za poklon ili za praznični sto. Izaberi koliko ti treba i dodaj u korpu.</p></div>
     <div class="grid3">${kartice}</div>
     ${al.length?`<p class="alergeni-nap"><b>Sadrže:</b> ${esc(al.join(", "))}. Ako imaš alergiju, napiši nam u napomeni uz porudžbinu.</p>`:""}`;
 }
@@ -148,7 +165,7 @@ function prikaziKorpu(){
   }
   if(!korpa.length){
     return `<div class="view-head"><span class="eyebrow">Korpa</span><h1>Korpa</h1></div>
-      <div class="prazna">${crtez("covek")}<h2>Korpa je prazna</h2><p>Izaberi medenjake iz ponude, pa se vrati ovde da uneseš podatke za dostavu.</p>
+      <div class="prazna">${crtez("kugla")}<h2>Korpa je prazna</h2><p>Izaberi novogodišnje medenjake iz ponude, pa se vrati ovde da uneseš podatke za dostavu.</p>
       <a class="btn" href="#ponuda">Pogledaj ponudu</a></div>`;
   }
   const stavke=korpa.map(s=>{

@@ -2,9 +2,10 @@
 <html lang="sr-Latn">
 <head>
 <meta charset="utf-8">
+<meta name="theme-color" content="#15382b">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Magični medenjaci</title>
-<meta name="description" content="Magični medenjaci: medenjaci od meda i začina, ukrašeni rukom. Izaberi iz ponude i poruči sa dostavom.">
+<meta name="description" content="Magični medenjaci: novogodišnji medenjaci od meda i začina, ukrašeni rukom. Izaberi iz ponude i poruči sa dostavom.">
 <meta property="og:title" content="Magični medenjaci">
 <meta property="og:description" content="Medenjaci ukrašeni rukom, sa dostavom.">
 <link rel="icon" href="slike/ikona.svg" type="image/svg+xml">
@@ -20,21 +21,26 @@
   <input name="ime"><input name="telefon"><input name="email"><input name="adresa"><input name="mesto"><input name="postanski"><input name="datum"><textarea name="napomena"></textarea><textarea name="stavke"></textarea><input name="bot-polje">
 </form>
 
-<div class="traka" aria-hidden="true"></div>
-<header class="top wrap">
+<header class="zima">
+<div class="lampice" aria-hidden="true"></div>
+<div class="sneg" aria-hidden="true"></div>
+<div class="top wrap">
   <a href="#ponuda" class="logo" aria-label="Magični medenjaci, početna">
     <span class="logo-krug" id="logo-crtez"></span>
     <span class="logo-ime">Magični medenjaci</span>
   </a>
+  <p class="slogan">Novogodišnji medenjaci, ukrašeni rukom</p>
   <nav class="tabs" aria-label="Glavni meni">
     <a href="#ponuda" data-route="ponuda">Ponuda</a>
     <a href="#korpa" data-route="korpa">Korpa <span class="badge" id="badge" data-zero>0</span></a>
   </nav>
+</div>
+<svg class="nanos" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40V22c60-14 120-14 180-2s130 14 200 0 140-16 210-4 130 16 200 2 150-14 220-2 130 12 190 0v24z"/></svg>
 </header>
 
 <main class="wrap" id="main"></main>
 
-<footer class="wrap">Magični medenjaci <span class="heart">♥</span> ukrašeno rukom</footer>
+<footer class="wrap">Magični medenjaci <span class="heart">✦</span> Srećna Nova godina!</footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="js/ponuda.js"></script>
