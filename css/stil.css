@@ -59,6 +59,7 @@ header.zima{position:relative;background:radial-gradient(120% 100% at 50% 0%,#2a
 .nanos{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:40px;display:block;z-index:1}
 .nanos path{fill:var(--paper)}
 header .top{position:relative;z-index:2;padding-block:10px 0;text-align:center}
+.pahulje{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:40}
 .scena{position:relative;z-index:2;height:clamp(170px,26vw,320px);margin-top:-6px}
 .scena svg{width:100%;height:100%;display:block}
 .slogan{font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;color:#f3d27a;margin-top:2px}
@@ -169,10 +170,12 @@ footer .heart{color:var(--gold)}
 }
 @media (max-width:900px){.jelka-ukras{width:110px}.jelka-ukras.desno{width:92px}}
 @media (max-width:620px){
-  .scena{height:auto;margin-top:2px}.scena svg{height:auto}
+  .pahulje{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:40}
+.scena{height:auto;margin-top:2px}.scena svg{height:auto}
   .jelka-ukras{width:74px;bottom:22px}.jelka-ukras.desno{width:62px}
   .grid3>*{flex-basis:100%}
-  .scena{position:relative;z-index:2;height:clamp(170px,26vw,320px);margin-top:-6px}
+  .pahulje{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:40}
+.scena{position:relative;z-index:2;height:clamp(170px,26vw,320px);margin-top:-6px}
 .scena svg{width:100%;height:100%;display:block}
 .slogan{font-size:.74rem;letter-spacing:.1em}
   .logo-krug{width:96px;height:96px;padding:11px}
