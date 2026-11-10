@@ -62,9 +62,9 @@ header .top{position:relative;z-index:2;padding-block:10px 0;text-align:center}
 .pahulje{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:40}
 .mesec{position:absolute;z-index:1;top:78px;right:max(6%,calc(50% - 520px));width:46px;height:46px;border-radius:50%;
   background:radial-gradient(circle at 38% 36%,#fffbe8,#f6e7b8 70%,#ead79f);box-shadow:0 0 22px 8px rgba(255,240,190,.28),0 0 70px 30px rgba(255,240,190,.12)}
-.scena{position:relative;z-index:2;height:clamp(170px,26vw,320px);margin-top:-6px}
+.scena{position:relative;z-index:2;height:clamp(200px,26vw,520px);margin-top:-6px}
 .scena svg{width:100%;height:100%;display:block}
-.slogan{font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;color:#f3d27a;margin-top:2px}
+.slogan{font-size:.92rem;letter-spacing:.14em;text-transform:uppercase;color:#f3d27a;margin-top:8px;text-wrap:balance}
 .logo{display:inline-grid;justify-items:center;gap:8px;text-decoration:none;color:#fdf6e9}
 .logo-slika{width:260px;height:auto;display:block;filter:drop-shadow(0 10px 22px rgba(0,0,0,.35))}
 .sastav-tekst{font-weight:700;color:var(--ink);font-size:1rem}
@@ -165,9 +165,9 @@ footer .heart{color:var(--gold)}
   .forma{position:static}
 }
 @media (max-width:620px){
-  .mesec{width:26px;height:26px;top:54px;right:6%}
+  .mesec{width:24px;height:24px;top:132px;right:6%}
   .logo-slika{width:170px}
-  .slogan{font-size:.74rem;letter-spacing:.1em}
+  .slogan{font-size:.72rem;letter-spacing:.08em}
   .scena{height:auto;margin-top:2px}.scena svg{height:auto}
   .grid3>*{flex-basis:100%}
   .stavka{grid-template-columns:72px minmax(0,1fr)}

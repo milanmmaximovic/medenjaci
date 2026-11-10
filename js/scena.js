@@ -4,7 +4,7 @@
 function scena(){
   const usko=window.matchMedia("(max-width:620px)").matches;
   const jelka=(x,y,sc,seme)=>`<g transform="translate(${x} ${y}) scale(${sc}) translate(-120 -266)">${jelkaUnutra(seme)}</g>`;
-  let s=`<svg viewBox="${usko?"250 60 830 240":"0 0 1200 300"}" preserveAspectRatio="${usko?"xMidYMax meet":"xMidYMax slice"}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  let s=`<svg viewBox="${usko?"250 -64 830 364":"0 0 1200 300"}" preserveAspectRatio="${usko?"xMidYMax meet":"xMidYMax slice"}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <defs>
     <linearGradient id="sc-tlo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#eef5fe"/><stop offset="1" stop-color="#e6f0fb"/></linearGradient>
     <linearGradient id="sc-brdo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bcd5f4"/><stop offset="1" stop-color="#9ebfe9"/></linearGradient>
@@ -29,54 +29,12 @@ function scena(){
   s+=jelka(70,240,.62,3)+jelka(172,230,.42,11)+jelka(1135,236,.6,5)+jelka(1040,228,.4,17)+jelka(455,226,.34,29)+jelka(708,220,.3,31);
   s+=`<path d="M0 250 C160 220 300 228 400 240 C520 254 620 246 720 236 C860 222 980 228 1080 238 C1140 244 1180 240 1200 236 V300 H0Z" fill="url(#sc-tlo)"/>`;
 
-  /* ---------- MEDENA KUĆICA (x=600) ---------- */
+  /* ---------- LOGO u sredini scene (x=600) ---------- */
   s+=`<circle cx="600" cy="196" r="150" fill="url(#sc-sjaj)"/>`;
   s+=`<ellipse cx="600" cy="254" rx="104" ry="9" fill="#9dbbe3" opacity=".45" filter="url(#sc-meko)"/>`;
-  // dimnjak i dim
-  s+=`<rect x="642" y="98" width="22" height="44" rx="3" fill="#9c4f27"/><path d="M642 112 H664 M642 126 H664 M653 98 V112 M648 112 V126 M658 126 V140" stroke="#7d3c1c" stroke-width="1.5"/>`;
-  s+=`<rect x="638" y="92" width="30" height="10" rx="5" fill="#ffffff"/>`;
-  [[660,78,7],[668,64,9],[662,48,11]].forEach(([x,y,r],i)=>s+=`<circle cx="${x}" cy="${y}" r="${r}" fill="#ffffff" opacity="${.32-i*.08}"/>`);
-  // zidovi
-  s+=`<rect x="526" y="156" width="148" height="96" rx="10" fill="url(#sc-zid)"/>`;
-  s+=`<rect x="526" y="156" width="148" height="96" rx="10" fill="none" stroke="#8a4a1f" stroke-opacity=".35" stroke-width="2"/>`;
-  // krov sa crepovima od čokolade
-  s+=`<path d="M494 174 Q488 166 497 159 L593 82 Q600 76 607 82 L703 159 Q712 166 706 174Z" fill="#6f3a1d"/>`;
-  s+=`<g clip-path="url(#sc-krov-clip)">`;
-  for(let r=0;r<6;r++){ const y=100+r*13, off=r%2?8:0; for(let x=500+off;x<=700;x+=16) s+=`<path d="M${x-8} ${y} a8 8 0 0 0 16 0" fill="#87482a" stroke="#5c2c14" stroke-width="1.2"/>`; }
-  s+=`</g>`;
-  // sneg na krovu sa kapima
-  s+=`<path d="M494 172 L600 84 L706 172" fill="none" stroke="#ffffff" stroke-width="13" stroke-linejoin="round" stroke-linecap="round"/>`;
-  s+=`<path d="M560 116 q6 14 0 22 q-6 -8 0 -22z M532 140 q6 12 0 20 q-6 -8 0 -20z M640 116 q6 14 0 22 q-6 -8 0 -22z M668 140 q6 12 0 20 q-6 -8 0 -20z" fill="#ffffff"/>`;
-  s+=`<path d="M590 84 q10 -14 20 0z" fill="#ffffff"/>`;
-  // bombone na strehi
-  [[510,176,"#ff5d73"],[534,176,"#4aa3ff"],[558,176,"#ffd23f"],[642,176,"#5bd69a"],[666,176,"#ff5d73"],[690,176,"#4aa3ff"]].forEach(([x,y,b])=>{
-    s+=`<circle cx="${x}" cy="${y}" r="6.5" fill="${b}"/><circle cx="${x-2}" cy="${y-2.4}" r="2.2" fill="#fff" opacity=".7"/>`; });
-  // girlanda lampica preko fasade
-  s+=`<path d="M532 168 Q566 186 600 170 Q634 186 668 168" fill="none" stroke="#2b3a2e" stroke-width="1.2"/>`;
-  [[546,176,"#ffd23f"],[566,181,"#ff5d73"],[586,176,"#5bd69a"],[614,176,"#4aa3ff"],[634,181,"#ffd23f"],[654,176,"#ff5d73"]].forEach(([x,y,b])=>{
-    s+=`<circle cx="${x}" cy="${y}" r="6" fill="${b}" opacity=".35" filter="url(#sc-meko)"/><circle cx="${x}" cy="${y}" r="2.6" fill="${b}"/>`; });
-  // prozori sa lukom
-  for(const x of [544,630]){
-    s+=`<path d="M${x} 222 V200 a13 13 0 0 1 26 0 V222Z" fill="url(#sc-prozor)" stroke="#ffffff" stroke-width="3.5" stroke-linejoin="round"/>`;
-    s+=`<path d="M${x+13} 187 V222 M${x} 205 H${x+26}" stroke="#ffffff" stroke-width="2.4"/>`;
-    s+=`<rect x="${x-4}" y="222" width="34" height="7" rx="3.5" fill="#ffffff"/>`;
-    s+=`<circle cx="${x+5}" cy="221" r="3" fill="#2f9a5e"/><circle cx="${x+13}" cy="219" r="3.4" fill="#2f9a5e"/><circle cx="${x+21}" cy="221" r="3" fill="#2f9a5e"/><circle cx="${x+13}" cy="217" r="1.8" fill="#ff5d73"/>`;
-  }
-  // vrata sa venčićem
-  s+=`<path d="M584 252 V222 a16 16 0 0 1 32 0 V252Z" fill="url(#sc-vrata)"/>`;
-  s+=`<path d="M584 252 V222 a16 16 0 0 1 32 0 V252" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="0.1 6" stroke-linecap="round"/>`;
-  s+=`<circle cx="600" cy="224" r="8" fill="none" stroke="#2f9a5e" stroke-width="4.5"/><path d="M596 231 l4 -3 4 3 -4 2z" fill="#ff5d73"/>`;
-  s+=`<circle cx="610" cy="240" r="2.4" fill="url(#sc-zlato)"/>`;
-  // glazura na dnu i uglovima
-  s+=`<path d="M530 246 q6 -6 12 0 q6 -6 12 0 q6 -6 12 0 q6 -6 12 0 M622 246 q6 -6 12 0 q6 -6 12 0 q6 -6 12 0 q6 -6 12 0" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>`;
-  // štapići-bombone
-  for(const x of [570,626]){ const d=`M${x} 252 V218 q0 -9 8 -9 q8 0 8 8`; s+=`<path d="${d}" fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#ef3e3e" stroke-width="5.5" stroke-dasharray="4 5" stroke-linecap="round"/>`; }
-
-  /* staza od snega */
-  s+=`<path d="M586 253 L614 253 C640 262 660 276 646 300 L534 300 C540 276 562 262 586 253Z" fill="#ffffff"/>`;
-  s+=`<path d="M586 253 C562 262 540 276 534 300 M614 253 C640 262 660 276 646 300" fill="none" stroke="#bcd3f0" stroke-width="2.5"/>`;
-  [[596,262],[606,269],[593,278],[605,287],[591,296]].forEach(([x,y])=>s+=`<ellipse cx="${x}" cy="${y}" rx="3.4" ry="2" fill="#d3e3f7"/>`);
-  [[548,282],[562,266],[636,282],[624,266]].forEach(([x,y])=>{ s+=`<circle cx="${x}" cy="${y-6}" r="9" fill="#ffd166" opacity=".35" filter="url(#sc-meko)"/><rect x="${x-1.5}" y="${y-6}" width="3" height="10" rx="1.5" fill="#33415c"/><circle cx="${x}" cy="${y-7}" r="3.6" fill="#ffd977"/>`; });
+  // logo umesto kućice
+  s+= usko ? `<image href="slike/logo.webp" x="438" y="-56" width="324" height="347"/>`
+           : `<image href="slike/logo.webp" x="472" y="12" width="256" height="274"/>`;
 
   /* ---------- SNEŠKO BELIĆ (x=330) ---------- */
   const X=330;
