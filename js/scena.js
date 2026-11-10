@@ -18,7 +18,7 @@ function scena(){
   const gumena=(x,y,b)=>`<g transform="translate(${x} ${y})"><path d="M-11 0 Q-12 -18 0 -19 Q12 -18 11 0Z" fill="${b}"/><path d="M-6 -12 q3 -5 7 -5" stroke="#fff" stroke-width="2.4" opacity=".6" fill="none" stroke-linecap="round"/>${[[-5,-6],[3,-10],[6,-3],[-2,-14],[-7,-2]].map(([a,c])=>`<circle cx="${a}" cy="${c}" r="1" fill="#fff" opacity=".85"/>`).join("")}<path d="M-13 1 Q0 -4 13 1 Q0 4 -13 1Z" fill="#ffffff"/></g>`;
   const stap=(x,y,sc,obrnut)=>{ const d=obrnut?`M0 0 V-70 q0 -22 -20 -22 q-20 0 -20 18`:`M0 0 V-70 q0 -22 20 -22 q20 0 20 18`;
     return `<g transform="translate(${x} ${y}) scale(${sc})"><path d="${d}" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#e5483f" stroke-width="13" stroke-dasharray="9 9" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#ffffff" stroke-width="3" opacity=".5" transform="translate(-3 0)"/></g>`; };
-  let s=`<svg viewBox="${usko?"250 -64 830 364":"0 0 1200 300"}" preserveAspectRatio="${usko?"xMidYMax meet":"xMidYMax slice"}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  let s=`<svg viewBox="${usko?"40 -64 1120 364":"0 0 1200 300"}" preserveAspectRatio="${usko?"xMidYMax meet":"xMidYMax slice"}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <defs>
     <linearGradient id="sc-tlo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#eef5fe"/><stop offset="1" stop-color="#e6f0fb"/></linearGradient>
     <linearGradient id="sc-brdo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bcd5f4"/><stop offset="1" stop-color="#9ebfe9"/></linearGradient>
@@ -41,8 +41,8 @@ function scena(){
 
   /* mesec i daleka brda */
   s+=`<path d="M0 228 C120 186 240 196 330 214 C430 234 520 200 640 196 C780 192 860 222 980 206 C1080 192 1150 204 1200 196 V300 H0Z" fill="url(#sc-brdo)" opacity=".55"/>`;
-  s+=bor(60,236,1.05)+bor(1145,232,1)+bor(250,214,.62)+bor(985,210,.6)+bor(445,222,.7)+bor(745,214,.55);
-  s+=medenaJelka(150,246,.62)+medenaJelka(1060,246,.58);
+  // simetrično oko logoa (x=600)
+  s+=bor(55,236,1.05)+bor(1145,236,1.05)+bor(150,214,.62)+bor(1050,214,.62)+bor(455,220,.7)+bor(745,220,.7);
   s+=`<path d="M0 250 C160 220 300 228 400 240 C520 254 620 246 720 236 C860 222 980 228 1080 238 C1140 244 1180 240 1200 236 V300 H0Z" fill="url(#sc-tlo)"/>`;
 
   /* ---------- LOGO u sredini scene (x=600) ---------- */
@@ -52,11 +52,9 @@ function scena(){
   s+= usko ? `<image href="slike/logo.webp" x="438" y="-56" width="324" height="347"/>`
            : `<image href="slike/logo.webp" x="472" y="12" width="256" height="274"/>`;
 
-  s+=stap(430,258,.75,false)+stap(772,262,.6,true);
-  s+=gumena(470,266,"#e5483f")+gumena(500,274,"#8dbf8b")+gumena(702,272,"#5a9be0")+gumena(735,268,"#f6c94a")+gumena(395,272,"#8dbf8b")+gumena(270,270,"#5a9be0")+gumena(1110,270,"#e5483f");
 
   /* ---------- SNEŠKO BELIĆ (x=330) ---------- */
-  const X=330;
+  const X=345;
   s+=`<ellipse cx="${X}" cy="262" rx="44" ry="7" fill="#9dbbe3" opacity=".5" filter="url(#sc-meko)"/>`;
   // ruke
   s+=`<path d="M${X-22} 186 C${X-38} 178 ${X-48} 170 ${X-58} 156 M${X-46} 168 l-10 -2 M${X+22} 186 C${X+38} 176 ${X+50} 168 ${X+58} 152 M${X+48} 165 l9 -5" stroke="#6b3f22" stroke-width="3.6" stroke-linecap="round" fill="none"/>`;
@@ -81,8 +79,9 @@ function scena(){
   s+=`<path d="M${X-8} 102 V124" stroke="#ffffff" stroke-width="2.4" opacity=".25" stroke-linecap="round"/>`;
   s+=`<ellipse cx="${X}" cy="100" rx="13" ry="3.4" fill="#7d4a27"/>`;
 
+  s+=`<g transform="translate(78 0)">`;
   /* ---------- IRVASI (x≈925 i 1010) ---------- */
-  const irvas=(x,saal)=>`<g transform="translate(${x} 252)">
+  const irvas_=(x,saal)=>`<g transform="translate(${x} 252)">
     <ellipse cx="6" cy="2" rx="40" ry="5" fill="#9dbbe3" opacity=".5"/>
     <rect x="-28" y="-34" width="7" height="34" rx="3.5" fill="#7a4d2b"/><rect x="-16" y="-34" width="7" height="34" rx="3.5" fill="#8b5a33"/>
     <rect x="14" y="-34" width="7" height="34" rx="3.5" fill="#7a4d2b"/><rect x="25" y="-34" width="7" height="34" rx="3.5" fill="#8b5a33"/>
@@ -102,7 +101,7 @@ function scena(){
     <ellipse cx="45" cy="-89" rx="2.6" ry="3.4" fill="#22160c"/><circle cx="46" cy="-90.4" r="1" fill="#fff"/>
     <circle cx="50" cy="-81" r="3" fill="#ff8fa3" opacity=".5"/>
   </g>`;
-  s+=irvas(1010,"url(#sc-crveno)")+irvas(925,"#2f9a5e");
+  s+=irvas_(1010,"url(#sc-crveno)")+irvas_(925,"#2f9a5e");
   // uzde
   s+=`<path d="M842 194 C880 206 920 206 948 200 M948 200 C980 196 1012 198 1036 200" stroke="url(#sc-zlato)" stroke-width="2.2" fill="none"/>`;
 
@@ -138,6 +137,21 @@ function scena(){
   s+=`<path d="M736 202 C748 202 754 214 770 220 C796 230 834 228 872 220" fill="none" stroke="url(#sc-zlato)" stroke-width="3" stroke-linecap="round"/>`;
   s+=`<path d="M744 230 c6 -8 12 -8 18 0 c6 -8 12 -8 18 0" fill="none" stroke="url(#sc-zlato)" stroke-width="2.4" stroke-linecap="round"/>`;
   s+=`<circle cx="800" cy="231" r="4" fill="url(#sc-zlato)"/><circle cx="830" cy="231" r="4" fill="url(#sc-zlato)"/><circle cx="860" cy="229" r="4" fill="url(#sc-zlato)"/>`;
+
+  s+=`</g>`;
+
+  /* ---------- levo od Sneška: medeni čovečuljak i pokloni (parnjak Deda Mrazu) ---------- */
+  const poklon=(x,y,w,h,b,t)=>`<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="${b}"/><rect x="${x-3}" y="${y-6}" width="${w+6}" height="10" rx="3" fill="${b}"/>
+    <rect x="${x+w/2-4}" y="${y-6}" width="8" height="${h+6}" fill="${t}"/><path d="M${x+w/2} ${y-6} q-12 -14 -16 -2 q6 6 16 2 q12 -14 16 -2 q-6 6 -16 2" fill="${t}"/>
+    <rect x="${x+4}" y="${y+4}" width="4" height="${h-10}" rx="2" fill="#fff" opacity=".25"/></g>`;
+  s+=`<ellipse cx="205" cy="262" rx="80" ry="7" fill="#9dbbe3" opacity=".5" filter="url(#sc-meko)"/>`;
+  s+=poklon(184,216,42,44,"url(#sc-crveno)","#ffffff")+poklon(232,228,34,32,"url(#sc-plavo)","#f6c94a")+poklon(198,182,30,30,"#8dbf8b","#e5483f");
+  s+=`<g transform="translate(122 264) scale(.66) translate(-100 -178)">${CRTEZI.covek()}</g>`;
+
+  /* bombone i štapovi, simetrično, u prednjem planu */
+  s+=stap(452,262,.6,false)+stap(748,262,.6,true);
+  s+=gumena(482,272,"#e5483f")+gumena(718,272,"#5a9be0")+gumena(512,280,"#8dbf8b")+gumena(688,280,"#f6c94a")
+    +gumena(338,276,"#f6c94a")+gumena(862,276,"#8dbf8b")+gumena(275,274,"#5a9be0")+gumena(925,274,"#e5483f");
 
   return s+`</svg>`;
 }
