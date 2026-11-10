@@ -15,8 +15,11 @@
    ===================================================================== */
 const ALERGENI = { gluten:"gluten", jaja:"jaja", mleko:"mleko", orasasti:"orašasti plodovi", soja:"soja" };
 
-/* Osnova svih medenjaka: testo sa medom i začinima, ukras od šećerne glazure. */
-const OSNOVNI_ALERGENI = ["gluten","jaja"];
+/* Sastav (prikazuje se ispod naslova ponude). */
+const SASTAV = ["pšenično brašno","jaja","med","šećer","cimet","maslac"];
+
+/* Alergeni iz sastava: brašno = gluten, jaja, maslac = mleko. */
+const OSNOVNI_ALERGENI = ["gluten","jaja","mleko"];
 
 const PONUDA = [
   { id:"kugla", naziv:"Kugla za jelku", oblik:"kugla", slika:null,

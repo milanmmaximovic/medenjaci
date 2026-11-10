@@ -48,7 +48,7 @@ function stranica(dalje: string, greska = ""): string {
     background-image:linear-gradient(90deg,rgba(179,53,43,.38) 50%,transparent 50%),linear-gradient(0deg,rgba(179,53,43,.38) 50%,transparent 50%);
     background-size:12px 12px}
   main{width:100%;max-width:360px;display:grid;gap:18px;justify-items:center;text-align:center}
-  img{width:150px;height:150px;border-radius:50%;box-shadow:0 8px 24px rgba(74,42,23,.08)}
+  img{width:200px;height:auto}
   h1{font-family:"Lora",Georgia,serif;font-weight:500;font-size:1.5rem;margin:0}
   p{margin:0;color:var(--soft);line-height:1.5}
   form{width:100%;display:grid;gap:10px;text-align:left;background:var(--surface);padding:20px;border-radius:18px;
@@ -63,7 +63,7 @@ function stranica(dalje: string, greska = ""): string {
 <body>
 <div class="karo" aria-hidden="true"></div>
 <main>
-  <img src="/slike/ikona.svg" alt="Magični medenjaci">
+  <img src="/slike/logo.webp" alt="Mala prodavnica medenjaka">
   <h1>Uskoro otvaramo</h1>
   <p>Sajt je još u pripremi. Ako imaš lozinku, upiši je ispod.</p>
   <form method="post" action="/ulaz">
@@ -125,5 +125,5 @@ export default async (request: Request, context: Context) => {
 
 export const config: Config = {
   path: "/*",
-  excludedPath: ["/slike/ikona.svg", "/slike/apple-touch-icon.png"],
+  excludedPath: ["/slike/ikona.svg", "/slike/logo.webp", "/slike/apple-touch-icon.png"],
 };

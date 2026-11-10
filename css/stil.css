@@ -65,15 +65,9 @@ header .top{position:relative;z-index:2;padding-block:10px 0;text-align:center}
 .scena{position:relative;z-index:2;height:clamp(170px,26vw,320px);margin-top:-6px}
 .scena svg{width:100%;height:100%;display:block}
 .slogan{font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;color:#f3d27a;margin-top:2px}
-.jelka-ukras{position:absolute;bottom:14px;z-index:1;width:170px;pointer-events:none;filter:drop-shadow(0 8px 16px rgba(0,0,0,.3))}
-.jelka-ukras svg{width:100%;height:auto;display:block}
-.jelka-ukras.levo{left:max(3%,calc(50% - 470px))}
-.jelka-ukras.desno{right:max(3%,calc(50% - 470px));width:140px}
 .logo{display:inline-grid;justify-items:center;gap:8px;text-decoration:none;color:#fdf6e9}
-.logo-krug{width:120px;height:120px;border-radius:50%;background:#fbf4e8;display:grid;place-items:center;box-shadow:0 0 0 4px #d9a441,0 0 0 9px rgba(217,164,65,.25),0 10px 30px rgba(0,0,0,.35);padding:14px;
-  outline:2px dashed rgba(184,105,47,.5);outline-offset:-8px}
-.logo-krug svg{width:100%;height:100%;display:block}
-.logo-ime{font-family:var(--f-display);font-style:italic;font-size:1.55rem;font-weight:500;letter-spacing:.01em}
+.logo-slika{width:260px;height:auto;display:block;filter:drop-shadow(0 10px 22px rgba(0,0,0,.35))}
+.sastav-tekst{font-weight:700;color:var(--ink);font-size:1rem}
 nav.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 6px;margin-top:12px;padding-bottom:6px}
 nav.tabs a{color:rgba(253,246,233,.72);text-decoration:none;padding:10px 14px 12px;font-weight:600;font-size:.92rem;position:relative;display:inline-flex;align-items:center;gap:8px}
 nav.tabs a[aria-current="page"]{color:#fff}
@@ -170,25 +164,15 @@ footer .heart{color:var(--gold)}
   .korpa{grid-template-columns:minmax(0,1fr)}
   .forma{position:static}
 }
-@media (max-width:900px){.jelka-ukras{width:110px}.jelka-ukras.desno{width:92px}}
 @media (max-width:620px){
-  .pahulje{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:40}
-.mesec{position:absolute;z-index:1;top:78px;right:max(6%,calc(50% - 520px));width:46px;height:46px;border-radius:50%;
-  background:radial-gradient(circle at 38% 36%,#fffbe8,#f6e7b8 70%,#ead79f);box-shadow:0 0 22px 8px rgba(255,240,190,.28),0 0 70px 30px rgba(255,240,190,.12)}
-.scena{height:auto;margin-top:2px}.scena svg{height:auto}
-  .jelka-ukras{width:74px;bottom:22px}.jelka-ukras.desno{width:62px}
+  .mesec{width:26px;height:26px;top:54px;right:6%}
+  .logo-slika{width:170px}
+  .slogan{font-size:.74rem;letter-spacing:.1em}
+  .scena{height:auto;margin-top:2px}.scena svg{height:auto}
   .grid3>*{flex-basis:100%}
-  .pahulje{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:40}
-.mesec{position:absolute;z-index:1;top:78px;right:max(6%,calc(50% - 520px));width:46px;height:46px;border-radius:50%;
-  background:radial-gradient(circle at 38% 36%,#fffbe8,#f6e7b8 70%,#ead79f);box-shadow:0 0 22px 8px rgba(255,240,190,.28),0 0 70px 30px rgba(255,240,190,.12)}
-.scena{position:relative;z-index:2;height:clamp(170px,26vw,320px);margin-top:-6px}
-.scena svg{width:100%;height:100%;display:block}
-.slogan{font-size:.74rem;letter-spacing:.1em}
-  .logo-krug{width:96px;height:96px;padding:11px}
-  .logo-ime{font-size:1.3rem}
   .stavka{grid-template-columns:72px minmax(0,1fr)}
   .stavka .thumb{width:72px;height:72px}
   .stavka .desno{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center}
   .dva{grid-template-columns:minmax(0,1fr) 110px}
 }
-@media (prefers-reduced-motion:reduce){.toast{transition:none}.sneg,.lampice::before,.lampice::after{animation:none}}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}.lampice::before,.lampice::after{animation:none}}
