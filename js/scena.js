@@ -25,7 +25,6 @@ function scena(){
   </defs>`;
 
   /* mesec i daleka brda */
-  s+=`<circle cx="1050" cy="70" r="46" fill="#fff6d8" opacity=".18" filter="url(#sc-meko)"/><circle cx="1050" cy="70" r="22" fill="#fff4d2" opacity=".9"/>`;
   s+=`<path d="M0 228 C120 186 240 196 330 214 C430 234 520 200 640 196 C780 192 860 222 980 206 C1080 192 1150 204 1200 196 V300 H0Z" fill="url(#sc-brdo)" opacity=".55"/>`;
   s+=jelka(70,240,.62,3)+jelka(172,230,.42,11)+jelka(1135,236,.6,5)+jelka(1040,228,.4,17)+jelka(455,226,.34,29)+jelka(708,220,.3,31);
   s+=`<path d="M0 250 C160 220 300 228 400 240 C520 254 620 246 720 236 C860 222 980 228 1080 238 C1140 244 1180 240 1200 236 V300 H0Z" fill="url(#sc-tlo)"/>`;

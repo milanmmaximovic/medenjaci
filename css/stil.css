@@ -60,6 +60,8 @@ header.zima{position:relative;background:radial-gradient(120% 100% at 50% 0%,#2a
 .nanos path{fill:var(--paper)}
 header .top{position:relative;z-index:2;padding-block:10px 0;text-align:center}
 .pahulje{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:40}
+.mesec{position:absolute;z-index:1;top:78px;right:max(6%,calc(50% - 520px));width:46px;height:46px;border-radius:50%;
+  background:radial-gradient(circle at 38% 36%,#fffbe8,#f6e7b8 70%,#ead79f);box-shadow:0 0 22px 8px rgba(255,240,190,.28),0 0 70px 30px rgba(255,240,190,.12)}
 .scena{position:relative;z-index:2;height:clamp(170px,26vw,320px);margin-top:-6px}
 .scena svg{width:100%;height:100%;display:block}
 .slogan{font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;color:#f3d27a;margin-top:2px}
@@ -82,7 +84,7 @@ nav.tabs a[aria-current="page"]::after{content:"";position:absolute;left:14px;ri
 
 main{padding-block:22px 64px}
 .view-head .eyebrow{color:var(--gold-ink)}
-.view-head{display:grid;gap:8px;margin-bottom:24px;max-width:62ch}
+.view-head{display:grid;gap:8px;margin:0 auto 26px;max-width:62ch;text-align:center;justify-items:center}
 .view-head h1{font-size:clamp(1.7rem,3.4vw,2.3rem)}
 .view-head p{color:var(--ink-soft)}
 
@@ -171,10 +173,14 @@ footer .heart{color:var(--gold)}
 @media (max-width:900px){.jelka-ukras{width:110px}.jelka-ukras.desno{width:92px}}
 @media (max-width:620px){
   .pahulje{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:40}
+.mesec{position:absolute;z-index:1;top:78px;right:max(6%,calc(50% - 520px));width:46px;height:46px;border-radius:50%;
+  background:radial-gradient(circle at 38% 36%,#fffbe8,#f6e7b8 70%,#ead79f);box-shadow:0 0 22px 8px rgba(255,240,190,.28),0 0 70px 30px rgba(255,240,190,.12)}
 .scena{height:auto;margin-top:2px}.scena svg{height:auto}
   .jelka-ukras{width:74px;bottom:22px}.jelka-ukras.desno{width:62px}
   .grid3>*{flex-basis:100%}
   .pahulje{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:40}
+.mesec{position:absolute;z-index:1;top:78px;right:max(6%,calc(50% - 520px));width:46px;height:46px;border-radius:50%;
+  background:radial-gradient(circle at 38% 36%,#fffbe8,#f6e7b8 70%,#ead79f);box-shadow:0 0 22px 8px rgba(255,240,190,.28),0 0 70px 30px rgba(255,240,190,.12)}
 .scena{position:relative;z-index:2;height:clamp(170px,26vw,320px);margin-top:-6px}
 .scena svg{width:100%;height:100%;display:block}
 .slogan{font-size:.74rem;letter-spacing:.1em}
