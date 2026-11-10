@@ -3,7 +3,21 @@
 
 function scena(){
   const usko=window.matchMedia("(max-width:620px)").matches;
+  // pastelni snežni bor (pozadina na logou)
+  const bor=(x,y,sc)=>{ let g=`<g transform="translate(${x} ${y}) scale(${sc})">`;
+    g+=`<rect x="-7" y="-14" width="14" height="16" rx="3" fill="#8a5a36"/><ellipse cx="0" cy="2" rx="46" ry="6" fill="#ffffff" opacity=".9"/>`;
+    [[-150,-100,34],[-118,-62,44],[-82,-16,56]].forEach(([v,d,w])=>{
+      g+=`<path d="M0 ${v} L${w} ${d} Q0 ${d+12} ${-w} ${d}Z" fill="url(#sc-bor)"/>`;
+      g+=`<path d="M0 ${v} L${w*.62} ${v+(d-v)*.62} q${-w*.12} 8 ${-w*.24} 2 q${-w*.14} 8 ${-w*.28} 0 q${-w*.14} 8 ${-w*.28} 0 q${-w*.12} 6 ${-w*.24} -2Z" fill="#ffffff"/>`;
+      g+=`<path d="M${-w} ${d} Q0 ${d+12} ${w} ${d} Q${w*.6} ${d+8} ${w*.3} ${d+4} Q0 ${d+12} ${-w*.3} ${d+4} Q${-w*.6} ${d+8} ${-w} ${d}Z" fill="#ffffff" opacity=".9"/>`;
+    });
+    return g+`</g>`; };
+  // jelka od medenjaka sa glazurom (prednji plan na logou)
+  const medenaJelka=(x,y,sc)=>`<g transform="translate(${x} ${y}) scale(${sc}) translate(-100 -178)">${CRTEZI.jelka()}</g>`;
   const jelka=(x,y,sc,seme)=>`<g transform="translate(${x} ${y}) scale(${sc}) translate(-120 -266)">${jelkaUnutra(seme)}</g>`;
+  const gumena=(x,y,b)=>`<g transform="translate(${x} ${y})"><path d="M-11 0 Q-12 -18 0 -19 Q12 -18 11 0Z" fill="${b}"/><path d="M-6 -12 q3 -5 7 -5" stroke="#fff" stroke-width="2.4" opacity=".6" fill="none" stroke-linecap="round"/>${[[-5,-6],[3,-10],[6,-3],[-2,-14],[-7,-2]].map(([a,c])=>`<circle cx="${a}" cy="${c}" r="1" fill="#fff" opacity=".85"/>`).join("")}<path d="M-13 1 Q0 -4 13 1 Q0 4 -13 1Z" fill="#ffffff"/></g>`;
+  const stap=(x,y,sc,obrnut)=>{ const d=obrnut?`M0 0 V-70 q0 -22 -20 -22 q-20 0 -20 18`:`M0 0 V-70 q0 -22 20 -22 q20 0 20 18`;
+    return `<g transform="translate(${x} ${y}) scale(${sc})"><path d="${d}" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#e5483f" stroke-width="13" stroke-dasharray="9 9" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#ffffff" stroke-width="3" opacity=".5" transform="translate(-3 0)"/></g>`; };
   let s=`<svg viewBox="${usko?"250 -64 830 364":"0 0 1200 300"}" preserveAspectRatio="${usko?"xMidYMax meet":"xMidYMax slice"}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <defs>
     <linearGradient id="sc-tlo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#eef5fe"/><stop offset="1" stop-color="#e6f0fb"/></linearGradient>
@@ -20,13 +34,15 @@ function scena(){
     <linearGradient id="sc-irvas" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b47c4f"/><stop offset="1" stop-color="#83552f"/></linearGradient>
     <linearGradient id="sc-dzak" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c79a63"/><stop offset="1" stop-color="#8f6337"/></linearGradient>
     <linearGradient id="sc-sargarepa" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff9a3c"/><stop offset="1" stop-color="#e5671b"/></linearGradient>
+    <linearGradient id="sc-bor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9d0a3"/><stop offset="1" stop-color="#78ad7c"/></linearGradient>
     <filter id="sc-meko" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
     <clipPath id="sc-krov-clip"><path d="M500 168 L600 86 L700 168Z"/></clipPath>
   </defs>`;
 
   /* mesec i daleka brda */
   s+=`<path d="M0 228 C120 186 240 196 330 214 C430 234 520 200 640 196 C780 192 860 222 980 206 C1080 192 1150 204 1200 196 V300 H0Z" fill="url(#sc-brdo)" opacity=".55"/>`;
-  s+=jelka(70,240,.62,3)+jelka(172,230,.42,11)+jelka(1135,236,.6,5)+jelka(1040,228,.4,17)+jelka(455,226,.34,29)+jelka(708,220,.3,31);
+  s+=bor(60,236,1.05)+bor(1145,232,1)+bor(250,214,.62)+bor(985,210,.6)+bor(445,222,.7)+bor(745,214,.55);
+  s+=medenaJelka(150,246,.62)+medenaJelka(1060,246,.58);
   s+=`<path d="M0 250 C160 220 300 228 400 240 C520 254 620 246 720 236 C860 222 980 228 1080 238 C1140 244 1180 240 1200 236 V300 H0Z" fill="url(#sc-tlo)"/>`;
 
   /* ---------- LOGO u sredini scene (x=600) ---------- */
@@ -36,6 +52,9 @@ function scena(){
   s+= usko ? `<image href="slike/logo.webp" x="438" y="-56" width="324" height="347"/>`
            : `<image href="slike/logo.webp" x="472" y="12" width="256" height="274"/>`;
 
+  s+=stap(430,258,.75,false)+stap(772,262,.6,true);
+  s+=gumena(470,266,"#e5483f")+gumena(500,274,"#8dbf8b")+gumena(702,272,"#5a9be0")+gumena(735,268,"#f6c94a")+gumena(395,272,"#8dbf8b")+gumena(270,270,"#5a9be0")+gumena(1110,270,"#e5483f");
+
   /* ---------- SNEŠKO BELIĆ (x=330) ---------- */
   const X=330;
   s+=`<ellipse cx="${X}" cy="262" rx="44" ry="7" fill="#9dbbe3" opacity=".5" filter="url(#sc-meko)"/>`;
@@ -44,7 +63,7 @@ function scena(){
   s+=`<circle cx="${X-59}" cy="153" r="7" fill="url(#sc-crveno)"/><circle cx="${X+59}" cy="149" r="7" fill="url(#sc-crveno)"/>`;
   // telo
   s+=`<circle cx="${X}" cy="228" r="35" fill="url(#sc-sneg)"/><circle cx="${X}" cy="183" r="26" fill="url(#sc-sneg)"/><circle cx="${X}" cy="146" r="20" fill="url(#sc-sneg)"/>`;
-  [176,190,206,222].forEach((y,i)=>s+=`<circle cx="${X}" cy="${y+(i>1?14:0)}" r="3.2" fill="#2b3142"/>`);
+  [176,190,206,222].forEach((y,i)=>s+=`<circle cx="${X}" cy="${y+(i>1?14:0)}" r="3.4" fill="#6b3f22"/>`);
   // šal
   s+=`<path d="M${X-20} 160 Q${X} 172 ${X+20} 160 L${X+21} 168 Q${X} 180 ${X-21} 168Z" fill="url(#sc-crveno)"/>`;
   s+=`<path d="M${X-12} 164 l2 9 M${X} 167 l0 9 M${X+12} 164 l-2 9" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".9"/>`;
@@ -55,11 +74,12 @@ function scena(){
   s+=`<circle cx="${X-12}" cy="150" r="4" fill="#ff8fa3" opacity=".55"/><circle cx="${X+12}" cy="150" r="4" fill="#ff8fa3" opacity=".55"/>`;
   s+=`<path d="M${X-1} 146 L${X+20} 151 L${X-1} 151.5Z" fill="url(#sc-sargarepa)"/>`;
   s+=`<path d="M${X-6} 155 q6 5 12 0" fill="none" stroke="#2b3142" stroke-width="2.2" stroke-linecap="round"/>`;
-  // kapa
-  s+=`<path d="M${X-18} 132 C${X-19} 110 ${X+19} 106 ${X+19} 132Z" fill="url(#sc-plavo)"/>`;
-  s+=`<path d="M${X-14} 120 H${X+15} M${X-10} 112 H${X+11}" stroke="#ffffff" stroke-width="3" opacity=".8"/>`;
-  s+=`<rect x="${X-22}" y="129" width="44" height="8" rx="4.5" fill="#f4f9ff"/>`;
-  s+=`<circle cx="${X}" cy="106" r="7.5" fill="#ffffff"/><circle cx="${X-3}" cy="103" r="3" fill="#ffffff" opacity=".9"/>`;
+  // cilindar kao na logou
+  s+=`<ellipse cx="${X}" cy="131" rx="24" ry="5.5" fill="#5e3519"/>`;
+  s+=`<path d="M${X-14} 131 L${X-13} 100 Q${X} 96 ${X+13} 100 L${X+14} 131Z" fill="#6f4020"/>`;
+  s+=`<path d="M${X-13.6} 122 Q${X} 126 ${X+13.6} 122 L${X+13.8} 128 Q${X} 132 ${X-13.8} 128Z" fill="#e5483f"/>`;
+  s+=`<path d="M${X-8} 102 V124" stroke="#ffffff" stroke-width="2.4" opacity=".25" stroke-linecap="round"/>`;
+  s+=`<ellipse cx="${X}" cy="100" rx="13" ry="3.4" fill="#7d4a27"/>`;
 
   /* ---------- IRVASI (x≈925 i 1010) ---------- */
   const irvas=(x,saal)=>`<g transform="translate(${x} 252)">

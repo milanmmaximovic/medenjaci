@@ -136,7 +136,7 @@ function kolicinaHtml(akcija,id,vr,min){
 function prikaziPonudu(){
   const kartice=PONUDA.map(p=>{
     const sitno=[p.velicina,p.pakovanje].filter(Boolean).map(t=>`<span class="chip">${esc(t)}</span>`).join("");
-    return `<article class="kartica">
+    return `<article class="kartica kolac">
       <div class="foto">${slikaZa(p)}</div>
       <div class="body">
         <div class="naslov-red"><h2>${esc(p.naziv)}</h2>${typeof p.cena==="number"?`<span class="cena">${din(p.cena)}</span>`:""}</div>
@@ -158,19 +158,19 @@ function prikaziPonudu(){
 function prikaziKorpu(){
   if(poslednjaPotvrda){
     const p=poslednjaPotvrda;
-    return `<div class="potvrda"><span class="eyebrow">Porudžbina primljena</span><h2>Hvala, ${esc(p.ime)}!</h2>
+    return `<div class="potvrda kolac"><span class="eyebrow">Porudžbina primljena</span><h2>Hvala, ${esc(p.ime)}!</h2>
       <p>Tvoja porudžbina od ${p.komada} ${komada(p.komada)} je zabeležena${p.datum? " za "+esc(new Date(p.datum).toLocaleDateString("sr-Latn-RS",{weekday:"long",day:"numeric",month:"long"})) : ""}, dostava na adresu ${esc(p.adresa)}, ${esc(p.mesto)}.</p>
       <p class="napomena">${PROBNI_REZIM ? "Ovo je probna verzija sajta: porudžbina nije stvarno poslata." : esc(DOSTAVA.napomena)+" Broj: "+esc(p.telefon)+"."}</p>
       <div><a class="btn" href="#ponuda" data-akcija="nova">Nazad na ponudu</a></div></div>`;
   }
   if(!korpa.length){
     return `<div class="view-head"><span class="eyebrow">Korpa</span><h1>Korpa</h1></div>
-      <div class="prazna">${crtez("kugla")}<h2>Korpa je prazna</h2><p>Izaberi novogodišnje medenjake iz ponude, pa se vrati ovde da uneseš podatke za dostavu.</p>
+      <div class="prazna kolac">${crtez("kugla")}<h2>Korpa je prazna</h2><p>Izaberi novogodišnje medenjake iz ponude, pa se vrati ovde da uneseš podatke za dostavu.</p>
       <a class="btn" href="#ponuda">Pogledaj ponudu</a></div>`;
   }
   const stavke=korpa.map(s=>{
     const p=nadji(s.id);
-    return `<article class="stavka"><div class="thumb">${slikaZa(p)}</div>
+    return `<article class="stavka kolac"><div class="thumb">${slikaZa(p)}</div>
       <div style="min-width:0"><h3>${esc(p.naziv)}</h3><p class="det">${esc([p.velicina,p.pakovanje].filter(Boolean).join(" · "))}</p>
       ${typeof p.cena==="number"?`<p class="det">${s.kolicina} × ${din(p.cena)} = <b>${din(s.kolicina*p.cena)}</b></p>`:""}</div>
       <div class="desno">${kolicinaHtml("korpa-kol",s.id,s.kolicina,p.min||1)}
@@ -182,7 +182,7 @@ function prikaziKorpu(){
     <div class="korpa"><div class="stavke">${stavke}
       <div class="zbir"><span>Ukupno: <b>${ukupnoKomada()} ${komada(ukupnoKomada())}</b></span>${ukupno!==null?`<span>Iznos: <b>${din(ukupno)}</b> + dostava</span>`:""}</div>
     </div>
-    <form class="forma" id="forma" novalidate>
+    <form class="forma kolac" id="forma" novalidate>
       <h2>Podaci za dostavu</h2>
       <div class="polje"><label for="f-ime">Ime i prezime</label><input id="f-ime" name="ime" autocomplete="name" required placeholder="Ana Petrović"></div>
       <div class="polje"><label for="f-tel">Telefon</label><input id="f-tel" name="telefon" type="tel" autocomplete="tel" required placeholder="06x xxx xxxx"></div>
