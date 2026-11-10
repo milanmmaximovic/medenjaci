@@ -66,17 +66,20 @@ nav.tabs a[aria-current="page"] .badge[data-zero]{background:rgba(255,255,255,.2
 .scena svg{width:100%;height:100%;display:block}
 
 main{padding-block:18px 64px}
-.view-head{display:grid;gap:10px;margin:0 auto 30px;max-width:66ch;text-align:center;justify-items:center}
+.view-head{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin:0 auto 30px;max-width:66ch;text-align:center;justify-items:center}
 .view-head h1{font-family:var(--f-script);font-weight:400;font-size:clamp(2rem,4.4vw,3rem);color:var(--medenjak-2);line-height:1.25;
   text-shadow:0 2px 0 #fff,0 6px 14px rgba(168,96,42,.18)}
 .view-head p{color:var(--ink-soft)}
 .view-head::after{content:"";width:130px;height:10px;border-radius:6px;margin-top:4px;
   background:repeating-linear-gradient(-45deg,var(--crvena) 0 7px,#fff 7px 14px);box-shadow:0 2px 0 rgba(0,0,0,.06)}
-/* sastav kao pločica od medenjaka sa logoa */
-.view-head .sastav-tekst,.sastav-tekst{position:relative;font-family:var(--f-display);font-weight:600;font-size:1.02rem;color:#fff;
-  background:linear-gradient(180deg,#d98d4a,var(--medenjak-2));padding:12px 26px;border-radius:20px;box-shadow:0 4px 0 var(--medenjak-3),0 10px 22px rgba(90,52,24,.18);
-  text-shadow:0 1px 0 rgba(0,0,0,.15)}
-.sastav-tekst::after{content:"";position:absolute;inset:5px;border:2px dashed rgba(255,255,255,.9);border-radius:15px;pointer-events:none}
+/* sastav na crvenoj traci-mašni, uvek u jednom redu */
+.traka-sastav{position:relative;display:inline-flex;align-items:center;margin:4px 30px 6px;max-width:calc(100% - 60px)}
+.view-head .sastav-tekst,.sastav-tekst{position:relative;z-index:1;margin:0;white-space:nowrap;font-family:var(--f-display);font-weight:700;color:#fff;
+  font-size:clamp(10px,2.75vw,17px);background:#d9433a;padding:.7em 1.6em .6em;border-top:3px dotted #fff;border-bottom:3px dotted #fff;
+  box-shadow:0 6px 14px rgba(160,40,30,.22);text-shadow:0 1px 0 rgba(0,0,0,.15)}
+.traka-sastav .kraj{position:absolute;top:10px;bottom:-10px;width:44px;background:#b3221c;z-index:0}
+.traka-sastav .kraj.levo{left:-28px;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,13px 50%)}
+.traka-sastav .kraj.desno{right:-28px;clip-path:polygon(0 0,100% 0,calc(100% - 13px) 50%,100% 100%,0 100%)}
 
 /* dugmad kao medenjak sa glazurom */
 .btn{appearance:none;position:relative;border:0;background:linear-gradient(180deg,#d98d4a,var(--medenjak-2));color:#fff;border-radius:999px;padding:11px 22px;
@@ -176,7 +179,9 @@ footer .heart{color:#f8c3bd}
   .slogan{font-size:.78rem;letter-spacing:.08em}
   .scena{height:auto;margin-top:2px}.scena svg{height:auto}
   .grid3>*{flex-basis:100%}
-  .sastav-tekst{padding:12px 20px;font-size:.95rem}
+  .traka-sastav{margin-inline:22px;max-width:calc(100% - 44px)}
+  .view-head .sastav-tekst,.sastav-tekst{padding:.75em .9em .65em}
+  .traka-sastav .kraj{width:32px}.traka-sastav .kraj.levo{left:-20px}.traka-sastav .kraj.desno{right:-20px}
   .stavka{grid-template-columns:72px minmax(0,1fr)}
   .stavka .thumb{width:72px;height:72px}
   .stavka .desno{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center}

@@ -150,7 +150,7 @@ function prikaziPonudu(){
       </div></article>`;
   }).join("");
   const al=[...new Set(PONUDA.flatMap(p=>p.alergeni||[]))].map(a=>ALERGENI[a]);
-  return `<div class="view-head"><span class="eyebrow">Novogodišnja ponuda</span><h1>Medenjaci za praznike</h1>${SASTAV.length?`<p class="sastav-tekst">Sastav: ${esc(SASTAV.join(", "))}</p>`:""}<p>Od meda i začina, ukrašeni rukom: za jelku, za poklon ili za praznični sto. Izaberi koliko ti treba i dodaj u korpu.</p></div>
+  return `<div class="view-head"><span class="eyebrow">Novogodišnja ponuda</span><h1>Medenjaci za praznike</h1>${SASTAV.length?`<div class="traka-sastav"><i class="kraj levo" aria-hidden="true"></i><p class="sastav-tekst">Sastav: ${esc(SASTAV.join(", "))}</p><i class="kraj desno" aria-hidden="true"></i></div>`:""}<p>Od meda i začina, ukrašeni rukom: za jelku, za poklon ili za praznični sto. Izaberi koliko ti treba i dodaj u korpu.</p></div>
     <div class="grid3">${kartice}</div>
     ${al.length?`<p class="alergeni-nap"><b>Sadrže:</b> ${esc(al.join(", "))}. Ako imaš alergiju, napiši nam u napomeni uz porudžbinu.</p>`:""}`;
 }
