@@ -45,6 +45,10 @@ const PONUDA = [
     velicina:"6 × oko 10 cm", pakovanje:"kutija od 6 komada", cena:null, min:1, alergeni:OSNOVNI_ALERGENI },
 ];
 
+/* Probni režim: true = porudžbina se NE šalje, kupac vidi potvrdu sa napomenom da je ovo proba.
+   Prebaci na false kad sajt ide na Netlify i treba da prima prave porudžbine. */
+const PROBNI_REZIM = true;
+
 /* Dostava */
 const DOSTAVA = {
   najranijeZaDana: 2,          // najraniji datum dostave: danas + ovoliko dana

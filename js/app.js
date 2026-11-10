@@ -143,7 +143,7 @@ function prikaziKorpu(){
     const p=poslednjaPotvrda;
     return `<div class="potvrda"><span class="eyebrow">Porudžbina primljena</span><h2>Hvala, ${esc(p.ime)}!</h2>
       <p>Tvoja porudžbina od ${p.komada} ${komada(p.komada)} je zabeležena${p.datum? " za "+esc(new Date(p.datum).toLocaleDateString("sr-Latn-RS",{weekday:"long",day:"numeric",month:"long"})) : ""}, dostava na adresu ${esc(p.adresa)}, ${esc(p.mesto)}.</p>
-      <p class="napomena">${esc(DOSTAVA.napomena)} Broj: ${esc(p.telefon)}.</p>
+      <p class="napomena">${PROBNI_REZIM ? "Ovo je probna verzija sajta: porudžbina nije stvarno poslata." : esc(DOSTAVA.napomena)+" Broj: "+esc(p.telefon)+"."}</p>
       <div><a class="btn" href="#ponuda" data-akcija="nova">Nazad na ponudu</a></div></div>`;
   }
   if(!korpa.length){
@@ -229,7 +229,8 @@ document.addEventListener("submit",async e=>{
   const podaci={ "form-name":"porudzbina", ime:v("ime"), telefon:v("telefon"), email:v("email"), adresa:v("adresa"), mesto:v("mesto"), postanski:v("postanski"),
     datum:v("datum"), napomena:v("napomena"), stavke, "bot-polje":v("bot-polje") };
   dugme.disabled=true; dugme.textContent="Šaljem…"; gr.hidden=true;
-  try{
+  if(PROBNI_REZIM){ await new Promise(r=>setTimeout(r,400)); }
+  else try{
     const odg=await fetch("/",{ method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"}, body:new URLSearchParams(podaci).toString() });
     if(!odg.ok) throw new Error(odg.status);
   }catch(err){
