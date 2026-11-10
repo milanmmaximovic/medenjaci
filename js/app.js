@@ -258,5 +258,27 @@ document.addEventListener("submit",async e=>{
   korpa=[]; sacuvaj(); prikazi(); window.scrollTo({top:0});
 });
 
+/* okićena jelka za zaglavlje */
+function velikaJelka(seme){
+  const R=(()=>{ let h=seme; return ()=>((h=Math.imul(h^h>>>15,2246822507)+0x9e3779b9>>>0)%1000)/1000; })();
+  const nivoi=[[30,96,44],[66,140,64],[104,188,86],[146,236,106]]; // vrh y, dno y, pola širine
+  let s=`<svg viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg">`;
+  s+=`<rect x="106" y="226" width="28" height="36" rx="3" fill="#6b3f22"/><ellipse cx="120" cy="266" rx="70" ry="9" fill="#ffffff" opacity=".85"/>`;
+  [...nivoi].reverse().forEach(([v,d,w],i)=>{
+    const z=i%2? "#1f7a4d":"#24905a";
+    s+=`<path d="M120 ${v} L${120+w} ${d} Q120 ${d+14} ${120-w} ${d}Z" fill="${z}"/>`;
+    s+=`<path d="M${120-w} ${d} Q${120-w/2} ${d+10} 120 ${d+6} Q${120+w/2} ${d+10} ${120+w} ${d} Q120 ${d+16} ${120-w} ${d}Z" fill="#f4f9ff"/>`;
+  });
+  const boje=["#e8433a","#f3c53f","#4aa3ff","#ff7ab8","#ffffff","#9b6bff"];
+  nivoi.forEach(([v,d,w])=>{
+    s+=`<path d="M${120-w*.55} ${d-24} Q120 ${d-6} ${120+w*.7} ${d-30}" fill="none" stroke="#f3d27a" stroke-width="2.4" stroke-dasharray="1 4" stroke-linecap="round"/>`;
+    const n=Math.round(w/22);
+    for(let i=0;i<n;i++){ const t=(i+.5)/n, x=120-w*.8+t*w*1.6, y=d-8-R()*16; s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.5" fill="${boje[Math.floor(R()*boje.length)]}"/><circle cx="${(x-1.6).toFixed(1)}" cy="${(y-1.6).toFixed(1)}" r="1.6" fill="#fff" opacity=".7"/>`; }
+  });
+  s+=`<circle cx="120" cy="28" r="22" fill="#fff3b0" opacity=".35"/><path d="${zvezdaPutanja(120,28,17,7)}" fill="#f6cd3f" stroke="#e0a91e" stroke-width="1.5" stroke-linejoin="round"/>`;
+  return s+`</svg>`;
+}
 document.getElementById("logo-crtez").innerHTML=crtez("covek");
+document.getElementById("jelka-levo").innerHTML=velikaJelka(7);
+document.getElementById("jelka-desno").innerHTML=velikaJelka(23);
 prikazi();
