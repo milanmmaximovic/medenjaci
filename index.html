@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Magični medenjaci</title>
+<meta name="description" content="Magični medenjaci: medenjaci od meda i začina, ukrašeni rukom. Izaberi iz ponude i poruči sa dostavom.">
+<meta property="og:title" content="Magični medenjaci">
+<meta property="og:description" content="Medenjaci ukrašeni rukom, sa dostavom.">
+<link rel="icon" href="/slike/ikona.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/slike/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/stil.css">
+</head>
+<body>
+<!-- Netlify Forms: skrivena kopija forme da bi Netlify prepoznao polja porudžbine. -->
+<form name="porudzbina" data-netlify="true" netlify-honeypot="bot-polje" hidden>
+  <input name="ime"><input name="telefon"><input name="email"><input name="adresa"><input name="mesto"><input name="postanski"><input name="datum"><textarea name="napomena"></textarea><textarea name="stavke"></textarea><input name="bot-polje">
+</form>
+
+<div class="traka" aria-hidden="true"></div>
+<header class="top wrap">
+  <a href="#ponuda" class="logo" aria-label="Magični medenjaci, početna">
+    <span class="logo-krug" id="logo-crtez"></span>
+    <span class="logo-ime">Magični medenjaci</span>
+  </a>
+  <nav class="tabs" aria-label="Glavni meni">
+    <a href="#ponuda" data-route="ponuda">Ponuda</a>
+    <a href="#korpa" data-route="korpa">Korpa <span class="badge" id="badge" data-zero>0</span></a>
+  </nav>
+</header>
+
+<main class="wrap" id="main"></main>
+
+<footer class="wrap">Magični medenjaci <span class="heart">♥</span> ukrašeno rukom</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="/js/ponuda.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

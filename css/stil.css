@@ -1,0 +1,145 @@
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+/* Layout kao La Tarterie: krem papir sa sitnim zvezdicama, logo u sredini, traka kao bombona na vrhu. */
+:root{
+  --paper:#fbf4e8;
+  --surface:#ffffff;
+  --ink:#4a2a17;        /* tamno braon (kao pečeno testo) */
+  --ink-soft:#7d5e48;
+  --accent:#b3352b;     /* crvena kao bombona */
+  --accent-ink:#ffffff;
+  --accent-soft:#f8e4df;
+  --line:#efe1cc;
+  --tan:#b8692f;        /* boja medenjaka */
+  --plate:#f6ead7;
+  --warn:#a5452f;
+  --star-op:.6;
+  --shadow:0 1px 2px rgba(74,42,23,.06),0 8px 24px rgba(74,42,23,.08);
+  --f-display:"Lora",Georgia,"Times New Roman",serif;
+  --f-body:"Mulish","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#1b1410;--surface:#261c16;--ink:#f6e9da;--ink-soft:#c4ab95;--accent:#f0806f;--accent-ink:#1b1410;
+  --accent-soft:#3d2620;--line:#3a2c22;--tan:#d99a5e;--plate:#30241c;--warn:#f09a85;--star-op:.14;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);color-scheme:dark}}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--star-op);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg fill='%23e8c9a0'%3E%3Cpath d='M40 30l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z'/%3E%3Cpath transform='translate(150 120) scale(.7)' d='M0 -10l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z'/%3E%3Ccircle cx='200' cy='40' r='3'/%3E%3Ccircle cx='90' cy='190' r='2.5'/%3E%3Ccircle cx='20' cy='140' r='2'/%3E%3Cpath transform='translate(70 210) scale(.55)' d='M0 -10l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z'/%3E%3C/g%3E%3C/svg%3E")}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;text-wrap:balance;margin:0;line-height:1.2}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+
+/* traka kao bombona */
+.traka{height:10px;background:repeating-linear-gradient(-45deg,var(--accent) 0 8px,var(--paper) 8px 16px);opacity:.75}
+
+header.top{padding-block:18px 0;text-align:center}
+.logo{display:inline-grid;justify-items:center;gap:8px;text-decoration:none;color:var(--ink)}
+.logo-krug{width:120px;height:120px;border-radius:50%;background:var(--surface);display:grid;place-items:center;box-shadow:var(--shadow);padding:14px;
+  outline:2px dashed color-mix(in srgb,var(--tan) 55%,transparent);outline-offset:-8px}
+.logo-krug svg{width:100%;height:100%;display:block}
+.logo-ime{font-family:var(--f-display);font-style:italic;font-size:1.55rem;font-weight:500;letter-spacing:.01em}
+nav.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 6px;margin-top:10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+nav.tabs a{color:var(--ink-soft);text-decoration:none;padding:10px 14px 12px;font-weight:600;font-size:.92rem;position:relative;display:inline-flex;align-items:center;gap:8px}
+nav.tabs a[aria-current="page"]{color:var(--ink)}
+nav.tabs a[aria-current="page"]::after{content:"";position:absolute;left:14px;right:14px;bottom:-7px;height:3px;border-radius:3px;background:var(--accent)}
+.badge{min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--accent);color:var(--accent-ink);font-size:.75rem;display:inline-grid;place-items:center;font-variant-numeric:tabular-nums}
+.badge[data-zero]{background:var(--line);color:var(--ink-soft)}
+
+main{padding-block:28px 64px}
+.view-head{display:grid;gap:8px;margin-bottom:24px;max-width:62ch}
+.view-head h1{font-size:clamp(1.7rem,3.4vw,2.3rem)}
+.view-head p{color:var(--ink-soft)}
+
+/* dugmad */
+.btn{appearance:none;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:10px 18px;font-weight:700;font-size:.92rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;filter:none}
+.linkbtn{appearance:none;background:none;border:0;padding:0;color:var(--accent);font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+/* ponuda */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.kartica{background:var(--surface);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:grid;grid-template-rows:auto 1fr}
+.kartica .foto{aspect-ratio:4/3;background:var(--plate)}
+.kartica .foto img{width:100%;height:100%;object-fit:cover;display:block}
+.crtez-foto{width:100%;height:100%;display:grid;place-items:center;padding:8%}
+.crtez-foto svg{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 8px rgba(74,42,23,.18))}
+.kartica .body{padding:18px 18px 20px;display:grid;gap:12px;align-content:start}
+.naslov-red{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.kartica h2{font-size:1.3rem}
+.cena{font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.kartica .opis{color:var(--ink-soft);font-size:.92rem}
+.sastav{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.76rem;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--ink-soft);background:var(--paper)}
+.kupi{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:4px}
+.alergeni-nap{margin-top:26px;font-size:.84rem;color:var(--ink-soft);text-align:center}
+.alergeni-nap b{color:var(--ink)}
+
+/* količina */
+.kol{display:flex;align-items:center;gap:6px}
+.kol button{appearance:none;min-width:40px;min-height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);cursor:pointer;font-weight:700;font-size:1.05rem}
+.kol button:disabled{opacity:.4;cursor:not-allowed}
+.kol span{min-width:24px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700}
+
+/* forma */
+.polje{display:grid;gap:6px}
+.polje label{font-weight:700;font-size:.86rem}
+.opc-lbl{font-weight:400;color:var(--ink-soft)}
+.polje input,.polje textarea{width:100%;font-size:16px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 12px}
+.polje textarea{min-height:84px;resize:vertical}
+.hint{font-size:.78rem;color:var(--ink-soft)}
+.dva{display:grid;grid-template-columns:minmax(0,1fr) 130px;gap:12px}
+.nedostaje{font-size:.84rem;color:var(--warn)}
+
+/* korpa */
+.korpa{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:28px;align-items:start}
+.stavke{display:grid;gap:12px}
+.stavka{background:var(--surface);border-radius:18px;box-shadow:var(--shadow);padding:14px;display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:16px;align-items:center}
+.stavka .thumb{width:96px;height:96px;border-radius:50%;overflow:hidden;background:var(--plate)}
+.stavka .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.stavka .thumb .crtez-foto{padding:14%}
+.stavka h3{font-size:1.1rem}
+.stavka .det{font-size:.84rem;color:var(--ink-soft);margin-top:4px}
+.stavka .desno{display:grid;gap:4px;justify-items:end}
+.stavka .desno .linkbtn{padding:10px 6px;min-height:44px}
+.zbir{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding:12px 16px;border:1px dashed var(--line);border-radius:14px;color:var(--ink-soft)}
+.zbir b{color:var(--ink)}
+.forma{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:20px;display:grid;gap:14px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 14px)}
+.forma h2{font-size:1.3rem}
+.prazna{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:30px 24px;text-align:center;display:grid;gap:12px;justify-items:center}
+.prazna svg{width:110px;height:110px}
+.prazna h2{font-size:1.4rem}
+.prazna p{color:var(--ink-soft);max-width:44ch}
+.potvrda{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:28px;display:grid;gap:12px;max-width:640px}
+.potvrda h2{font-size:1.5rem}
+.potvrda .napomena{background:var(--accent-soft);border-radius:12px;padding:12px 14px;font-size:.88rem}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;
+  background:var(--ink);color:var(--paper);padding:11px 18px;border-radius:12px;font-size:.88rem;max-width:min(92vw,520px);box-shadow:var(--shadow);transition:opacity .2s,transform .2s;z-index:20}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+footer{padding-block:0 30px;text-align:center;font-size:.8rem;color:var(--ink-soft)}
+footer .heart{color:var(--accent)}
+
+@media (max-width:900px){
+  .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .korpa{grid-template-columns:minmax(0,1fr)}
+  .forma{position:static}
+}
+@media (max-width:620px){
+  .grid3{grid-template-columns:minmax(0,1fr)}
+  .logo-krug{width:96px;height:96px;padding:11px}
+  .logo-ime{font-size:1.3rem}
+  .stavka{grid-template-columns:72px minmax(0,1fr)}
+  .stavka .thumb{width:72px;height:72px}
+  .stavka .desno{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center}
+  .dva{grid-template-columns:minmax(0,1fr) 110px}
+}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
